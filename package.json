@@ -4,6 +4,11 @@
   "description": "",
   "main": "index.js",
   "bin": "bin.js",
+  "pkg": {
+    "assets": [
+      "public/**/*"
+    ]
+  },
   "scripts": {
     "dev": "node_modules/.bin/nodemon",
     "test": "mocha tests/*.js --exit"
