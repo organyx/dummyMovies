@@ -1,0 +1,38 @@
+body {
+    padding: 0 auto;
+    margin: 0 auto;
+    text-align: center;
+    width: 350px;
+}
+
+.title {
+    cursor: pointer;
+}
+
+.title:hover {
+    text-decoration: underline cornflowerblue solid;
+}
+
+#error {
+    border: 1px solid red;
+    display: inline-block;
+    margin: 0 auto;
+}
+
+#movieInfo {
+    border: 1px solid blue;
+    display: inline-block;
+    margin: 0 auto;
+}
+
+#movies {
+    border: 1px solid green;
+    display: inline-block;
+    margin: 0 auto;
+}
+
+#addMovie {
+    border: 1px solid burlywood;
+    display: inline-block;
+    margin: 0 auto;
+}

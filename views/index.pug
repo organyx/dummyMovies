@@ -1,0 +1,45 @@
+extends layout
+
+block content
+  h1= title
+  p Welcome to #{title}
+  #container
+
+    #error(:if="this.showError") Error
+      h2 {this.error}
+      
+    #movieInfo(:if="this.showSelectedMovie")
+      h2 Selected Movie
+        button(type="submit" @click="closeMovie") Close
+      p
+        strong Title:
+        | <span> {this.selectedMovie.title}</span>
+        br
+        strong Genre:
+        | <span> {this.selectedMovie.genre}</span>
+        br
+        strong CreatedAt:
+        | <span> {this.selectedMovie.createdAt}</span>
+
+    #movies
+      table
+        thead
+          th Title
+          th Genre
+          th Options
+        tbody#list(:if="this.movieList.length > 0")
+          tr.item(:for="item in this.movieList")
+            td(@click="getMovie" @bind="{item.id}") {item.title}
+            td {item.genre}
+            td: button(type="submit" @click="deleteMovie" @bind="{item.id}") Delete
+
+    #addMovie
+      form
+        div.form-group
+          label(for='title') Title:
+          input#title.form-control(type='text' placeholder='title' name='title' value="{this.selectedMovie.title}")
+        div.form-group
+          label(for='genre') Genre:
+          input#genre.form-control(type='text' placeholder='genre' name='genre' value="{this.selectedMovie.genre}")
+        button(:if="this.selectedMovie.title === this.default.title && this.selectedMovie.genre === this.default.genre" type="submit" @click="addMovie") Add Movie
+        button(:else type="submit" @click="updateMovie" @bind="{this.selectedMovie.id}") Update Movie

@@ -7,10 +7,13 @@ const app = express();
 app.use(morgan('tiny'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+app.set('view engine', 'pug');
+app.use(express.static(__dirname + '/public'));
 app.use(require('./routes/index.routes'));
 // First route
 app.get('/', (req, res) => {
-  res.json({ message: 'We are live' });
+  // res.json({ message: 'We are live' });
+  res.render('index', { title: 'dummyMovies' });
 });
 // Route for unspecified endpoints
 app.get('*', function(req, res) {
